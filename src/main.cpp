@@ -53,7 +53,7 @@ void OnSerialLoad(const F4SE::SerializationInterface* a_intfc)
 				core->OnSerialLoad(a_intfc, version, length);
 			} break;
 			default: {
-				logs::error("unrecognized signature type!");
+				REX::ERROR("unrecognized signature type!");
 			} break;
 		}
 	}
