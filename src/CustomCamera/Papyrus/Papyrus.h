@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CustomCamera/CoreData.h"
+#include "MCM/MCMDataLoader.h"
 
 namespace CustomCamera::Papyrus
 {
@@ -23,18 +23,18 @@ namespace CustomCamera::Papyrus
 
 	inline void Update(std::monostate)
 	{
-		CoreData::GetSingleton()->Load();
+		MCM::MCMDataLoader::GetSingleton()->Load();
 		const auto core = Core::GetSingleton();
-		core->Update();
-		core->UpdateCamera();
+		core->UpdateAndApplySettings();
+		core->UpdateCameraWeaponState();
 	}
 
 	inline void ToggleShoulder(std::monostate)
 	{
 		const auto core = Core::GetSingleton();
 		core->ToggleShoulder();
-		core->Update();
-		core->UpdateCamera();
+		core->UpdateAndApplySettings();
+		core->UpdateCameraWeaponState();
 	}
 
 	inline void ToggleFreeCamera(std::monostate)
